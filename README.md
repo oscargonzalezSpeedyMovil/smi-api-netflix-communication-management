@@ -2,7 +2,7 @@
   <img src="logospeedy.webp" width="400" alt="speedy" />
 </p>
 
-# smi-api-amazon-prepaid-product-order
+# smi-api-netflix-communication-management
 
 ![Static Badge](https://img.shields.io/badge/specification-OAS-blue)
 ![Static Badge](https://img.shields.io/badge/status-develop-green)
@@ -35,6 +35,6 @@ redocly lint path-to-root-file.json
 Redocly CLI is a great way to render API reference documentation. It uses open source Redoc to build your documentation. Use a command like this:
 
 ```shell
-    redocly build-docs smi-api-amazon-prepaid-product-order.json --output=smi-api-amazon-prepaid-product-order.html
+    redocly build-docs smi-api-netflix-communication-management.json --output=smi-api-netflix-communication-management.html
 ```
 
