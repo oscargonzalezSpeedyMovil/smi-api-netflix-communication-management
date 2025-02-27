@@ -8,7 +8,7 @@
 ![Static Badge](https://img.shields.io/badge/status-develop-green)
 ![Static Badge](https://img.shields.io/badge/version-1.0.0-blue)
 
-Este servicio gestiona el ciclo de vida de una suscripción asociada a amazon-prepaid.
+Este servicio gestiona comunicaciones North-South o South-North.
 
 ## Usage
 
