@@ -1,0 +1,3551 @@
+{
+   "openapi":"3.0.1",
+   "info":{
+      "title":"SMI - Netflix Communication Management",
+      "description":"This is Swagger UI environment generated for the TMF Communication Management specification",
+      "version":"1.0.0"
+   },
+   "servers":[
+      {
+         "url":"https://${serverRoot}/tmf-api/communicationManagement/v4/"
+      }
+   ],
+   "security":[
+      {
+         "basicAuth":[
+            
+         ]
+      }
+   ],
+   "tags":[
+      {
+         "name":"communicationMessage"
+      }
+   ],
+   "paths":{
+      "/communicationMessage":{
+         "get":{
+            "tags":[
+               "communicationMessage"
+            ],
+            "summary":"List a CommunicationMessage",
+            "description":"This operation list a CommunicationMessage entity.",
+            "operationId":"listCommunicationMessage",
+            "parameters":[
+               {
+                  "name":"correlatorId",
+                  "in":"header",
+                  "description":"NB ID used to match the request with its corresponding SB asynchronous notification. The format should be like below:  ASPID+yyyyMMddHHmmss+sequence(5 digits)  Note:+ means concat  The ASPID is the M2M indentifer, and its length is maximum 21 characters  yyyyMMddHHmmss is the UTC time format.  Sequence is an increased sequence, and its length is 5 digits.the sequence should be started with 00001 and end with 99999.  Example: TP000002322017022409365100021",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"userName",
+                  "in":"header",
+                  "description":"user Identifier",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"aspCallBackUrl",
+                  "in":"header",
+                  "description":"HUB will send the notify result request to this url directly",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"version",
+                  "in":"header",
+                  "description":"Transaction identity for each request",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"messageUUID",
+                  "in":"header",
+                  "description":"Transaction identity for each request",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"requestDate",
+                  "in":"header",
+                  "description":"Time and date the request is sent",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string",
+                     "format":"date-time"
+                  }
+               },
+               {
+                  "name":"senderBy",
+                  "in":"header",
+                  "description":"Identifier of the application or issuer of the request message",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"ipClient",
+                  "in":"header",
+                  "description":"Client Ip",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"ipServer",
+                  "in":"header",
+                  "description":"Server Ip",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"country",
+                  "in":"header",
+                  "description":"Indicates the country to route. ISO 1366 \u2013 3 character Example: MEX",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"targetSystem",
+                  "in":"header",
+                  "description":"The system where targets the request.",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"originSystem",
+                  "in":"header",
+                  "description":"The system where is originated the request.",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"channel",
+                  "in":"header",
+                  "description":"Identifies the channel that invokes the service.",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"applicationId",
+                  "in":"header",
+                  "description":"Application Id.",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"subChannel",
+                  "in":"header",
+                  "description":"Identifies the sub-channel that invokes the service.",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"device",
+                  "in":"header",
+                  "description":"Id of the device from which the invocation originated.",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"operatorId",
+                  "in":"header",
+                  "description":"Operator Identifier",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "maximum":256,
+                     "minimum":1,
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"employeeNumber",
+                  "in":"header",
+                  "description":"employeeNumber",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"userId",
+                  "in":"header",
+                  "description":"userId",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"salesForce",
+                  "in":"header",
+                  "description":"salesForce",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"region",
+                  "in":"header",
+                  "description":"Region",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"adendum",
+                  "in":"header",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"characteristic.name",
+                  "in":"query",
+                  "description":"Name of characteristic",
+                  "required":false,
+                  "style":"form",
+                  "explode":true,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"characteristic.value",
+                  "in":"query",
+                  "description":"Value of characteristic",
+                  "required":false,
+                  "style":"form",
+                  "explode":true,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Created",
+                  "headers":{
+                     "country":{
+                        "description":"Indicates the country to route. ISO 1366 \u2013 3 character Example: MEX",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "originSystem":{
+                        "description":"The system where is originated the request.",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "messageUUID":{
+                        "description":"Transaction identity for each request",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "latency":{
+                        "description":"Duration of the execution in milliseconds",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "maximum":30000,
+                           "minimum":1,
+                           "type":"integer"
+                        }
+                     },
+                     "correlatorId":{
+                        "description":"NB ID used to match the request with its corresponding SB asynchronous notification. The format should be like below:  ASPID+yyyyMMddHHmmss+sequence(5 digits)  Note:+ means concat  The ASPID is the M2M indentifer, and its length is maximum 21 characters  yyyyMMddHHmmss is the UTC time format.  Sequence is an increased sequence, and its length is 5 digits.the sequence should be started with 00001 and end with 99999.  Example: TP000002322017022409365100021",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "aspCallBackUrl":{
+                        "description":"HUB will send the notify result request to this url directly",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "user":{
+                        "description":"User making the request",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "responseDate":{
+                        "description":"Date and time the request is answered",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string",
+                           "format":"date-time"
+                        }
+                     },
+                     "targetSystem":{
+                        "description":"The system where targets the request.",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "sendBy":{
+                        "description":"Identifier of the application or issuer of the request message",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     }
+                  },
+                  "content":{
+                     "application/json;charset=utf-8":{
+                        "schema":{
+                           "type":"array",
+                           "items":{
+                              "type":"object",
+                              "properties":{
+                                 "id":{
+                                    "type":"string",
+                                    "description":"Unique identifier of Communication Message"
+                                 },
+                                 "description":{
+                                    "type":"string",
+                                    "description":"Description for the whole object"
+                                 },
+                                 "logFlag":{
+                                    "type":"boolean"
+                                 },
+                                 "messageType":{
+                                    "type":"string",
+                                    "description":"The type of message, such as: SMS, Email, Mobile app push notification"
+                                 },
+                                 "characteristic":{
+                                    "type":"array",
+                                    "description":"Any additional characteristic(s) of this message",
+                                    "items":{
+                                       "required":[
+                                          "name",
+                                          "value"
+                                       ],
+                                       "type":"object",
+                                       "properties":{
+                                          "id":{
+                                             "type":"string",
+                                             "description":"Unique identifier of the characteristic"
+                                          },
+                                          "name":{
+                                             "type":"string",
+                                             "description":"Name of the characteristic"
+                                          },
+                                          "valueType":{
+                                             "type":"string",
+                                             "description":"Data type of the value of the characteristic"
+                                          },
+                                          "value":{
+                                             "type":"string",
+                                             "description":"Value of the characteristic"
+                                          },
+                                          "@baseType":{
+                                             "type":"string",
+                                             "description":"When sub-classing, this defines the super-class"
+                                          },
+                                          "@schemaLocation":{
+                                             "type":"string",
+                                             "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                                             "format":"uri"
+                                          },
+                                          "@type":{
+                                             "type":"string",
+                                             "description":"When sub-classing, this defines the sub-class entity name"
+                                          }
+                                       },
+                                       "description":"Describes a given characteristic of an object or entity through a name/value pair."
+                                    }
+                                 },
+                                 "attachment":{
+                                    "type":"array",
+                                    "items":{
+                                       "type":"object",
+                                       "properties":{
+                                          "id":{
+                                             "type":"string",
+                                             "description":"Unique identifier for this particular attachment"
+                                          },
+                                          "href":{
+                                             "type":"string",
+                                             "description":"URI for this Attachment"
+                                          },
+                                          "attachmentType":{
+                                             "type":"string",
+                                             "description":"Attachment type such as video, picture"
+                                          },
+                                          "content":{
+                                             "type":"string",
+                                             "description":"The actual contents of the attachment object, if embedded, encoded as base64"
+                                          },
+                                          "description":{
+                                             "type":"string",
+                                             "description":"A narrative text describing the content of the attachment"
+                                          },
+                                          "mimeType":{
+                                             "type":"string",
+                                             "description":"Attachment mime type such as extension file for video, picture and document"
+                                          },
+                                          "name":{
+                                             "type":"string",
+                                             "description":"The name of the attachment"
+                                          },
+                                          "url":{
+                                             "type":"string",
+                                             "description":"Uniform Resource Locator, is a web page address (a subset of URI)"
+                                          },
+                                          "characteristic":{
+                                             "type":"array",
+                                             "description":"Any additional characteristic(s) of this message",
+                                             "items":{
+                                                "required":[
+                                                   "name",
+                                                   "value"
+                                                ],
+                                                "type":"object",
+                                                "properties":{
+                                                   "id":{
+                                                      "type":"string",
+                                                      "description":"Unique identifier of the characteristic"
+                                                   },
+                                                   "name":{
+                                                      "type":"string",
+                                                      "description":"Name of the characteristic"
+                                                   },
+                                                   "valueType":{
+                                                      "type":"string",
+                                                      "description":"Data type of the value of the characteristic"
+                                                   },
+                                                   "value":{
+                                                      "type":"string",
+                                                      "description":"Value of the characteristic"
+                                                   },
+                                                   "@baseType":{
+                                                      "type":"string",
+                                                      "description":"When sub-classing, this defines the super-class"
+                                                   },
+                                                   "@schemaLocation":{
+                                                      "type":"string",
+                                                      "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                                                      "format":"uri"
+                                                   },
+                                                   "@type":{
+                                                      "type":"string",
+                                                      "description":"When sub-classing, this defines the sub-class entity name"
+                                                   }
+                                                },
+                                                "description":"Describes a given characteristic of an object or entity through a name/value pair."
+                                             }
+                                          },
+                                          "validFor":{
+                                             "type":"object",
+                                             "properties":{
+                                                "endDateTime":{
+                                                   "type":"string",
+                                                   "description":"End of the time period, using IETC-RFC-3339 format",
+                                                   "format":"date-time",
+                                                   "example":"1985-04-12T23:20:50.520Z"
+                                                },
+                                                "startDateTime":{
+                                                   "type":"string",
+                                                   "description":"Start of the time period, using IETC-RFC-3339 format",
+                                                   "format":"date-time",
+                                                   "example":"1985-04-12T23:20:50.520Z"
+                                                }
+                                             },
+                                             "description":"A period of time, either as a deadline (endDateTime only) a startDateTime only, or both"
+                                          }
+                                       },
+                                       "description":"Complements the description of an element (for instance a product) through video, pictures..."
+                                    }
+                                 },
+                                 "receiver":{
+                                    "type":"array",
+                                    "items":{
+                                       "type":"object",
+                                       "properties":{
+                                          "id":{
+                                             "type":"string",
+                                             "description":"ID of the receiver"
+                                          },
+                                          "appUserId":{
+                                             "type":"string",
+                                             "description":"ID of the mobile app user"
+                                          },
+                                          "email":{
+                                             "type":"string",
+                                             "description":"Receiver address of email, if the communication type is email"
+                                          },
+                                          "ip":{
+                                             "type":"string",
+                                             "description":"IP address of the receiver"
+                                          },
+                                          "name":{
+                                             "type":"string",
+                                             "description":"Name of the receiver"
+                                          },
+                                          "phoneNumber":{
+                                             "type":"string",
+                                             "description":"Phone number of the receiver, if the communication type is SMS."
+                                          },
+                                          "party":{
+                                             "type":"object",
+                                             "properties":{
+                                                "id":{
+                                                   "type":"string",
+                                                   "description":"Unique identifier of a related entity."
+                                                },
+                                                "identifierType":{
+                                                   "type":"string"
+                                                },
+                                                "href":{
+                                                   "type":"string",
+                                                   "description":"Reference of the related entity."
+                                                },
+                                                "name":{
+                                                   "type":"string",
+                                                   "description":"Name of the related entity."
+                                                },
+                                                "role":{
+                                                   "type":"string",
+                                                   "description":"Role played by the related party"
+                                                },
+                                                "@baseType":{
+                                                   "type":"string",
+                                                   "description":"When sub-classing, this defines the super-class"
+                                                },
+                                                "@schemaLocation":{
+                                                   "type":"string",
+                                                   "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                                                   "format":"uri"
+                                                },
+                                                "@type":{
+                                                   "type":"string",
+                                                   "description":"When sub-classing, this defines the sub-class entity name"
+                                                },
+                                                "@referredType":{
+                                                   "type":"string",
+                                                   "description":"The actual type of the target instance when needed for disambiguation."
+                                                }
+                                             },
+                                             "description":"Related Entity reference. A related party defines party or party role linked to a specific entity."
+                                          }
+                                       },
+                                       "description":"Receivers of the communication message."
+                                    }
+                                 },
+                                 "sender":{
+                                    "type":"object",
+                                    "properties":{
+                                       "id":{
+                                          "type":"string",
+                                          "description":"ID of the sender"
+                                       },
+                                       "email":{
+                                          "type":"string",
+                                          "description":"Sender address of email, if the communication type is email"
+                                       },
+                                       "name":{
+                                          "type":"string",
+                                          "description":"Name of the sender"
+                                       },
+                                       "phoneNumber":{
+                                          "type":"string",
+                                          "description":"Phone number of the sender, if the communication type is SMS."
+                                       },
+                                       "party":{
+                                          "type":"object",
+                                          "properties":{
+                                             "id":{
+                                                "type":"string",
+                                                "description":"Unique identifier of a related entity."
+                                             },
+                                             "identifierType":{
+                                                "type":"string"
+                                             },
+                                             "href":{
+                                                "type":"string",
+                                                "description":"Reference of the related entity."
+                                             },
+                                             "name":{
+                                                "type":"string",
+                                                "description":"Name of the related entity."
+                                             },
+                                             "role":{
+                                                "type":"string",
+                                                "description":"Role played by the related party"
+                                             },
+                                             "@baseType":{
+                                                "type":"string",
+                                                "description":"When sub-classing, this defines the super-class"
+                                             },
+                                             "@schemaLocation":{
+                                                "type":"string",
+                                                "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                                                "format":"uri"
+                                             },
+                                             "@type":{
+                                                "type":"string",
+                                                "description":"When sub-classing, this defines the sub-class entity name"
+                                             },
+                                             "@referredType":{
+                                                "type":"string",
+                                                "description":"The actual type of the target instance when needed for disambiguation."
+                                             }
+                                          },
+                                          "description":"Related Entity reference. A related party defines party or party role linked to a specific entity."
+                                       }
+                                    },
+                                    "description":"Sender of the communication message."
+                                 },
+                                 "@baseType":{
+                                    "type":"string",
+                                    "description":"When sub-classing, this defines the super-class"
+                                 },
+                                 "@schemaLocation":{
+                                    "type":"string",
+                                    "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                                    "format":"uri"
+                                 },
+                                 "@type":{
+                                    "type":"string",
+                                    "description":"When sub-classing, this defines the sub-class entity name"
+                                 }
+                              },
+                              "description":"Communication message means a notification approach in the format of a message which can be dispatched (sent) to the certain user by the system with the content which can be felt and understood by the recipient. The user can be either a final customer or a customer service agent. The message can reach the customer in different interaction channels, including: email, short message, mobile app notification (push)."
+                           }
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad Request",
+                  "headers":{
+                     "country":{
+                        "description":"Indicates the country to route. ISO 1366 \u2013 3 character Example: MEX",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "originSystem":{
+                        "description":"The system where is originated the request.",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "messageUUID":{
+                        "description":"Transaction identity for each request",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "latency":{
+                        "description":"Duration of the execution in milliseconds",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "maximum":30000,
+                           "minimum":1,
+                           "type":"integer"
+                        }
+                     },
+                     "correlatorId":{
+                        "description":"NB ID used to match the request with its corresponding SB asynchronous notification. The format should be like below:  ASPID+yyyyMMddHHmmss+sequence(5 digits)  Note:+ means concat  The ASPID is the M2M indentifer, and its length is maximum 21 characters  yyyyMMddHHmmss is the UTC time format.  Sequence is an increased sequence, and its length is 5 digits.the sequence should be started with 00001 and end with 99999.  Example: TP000002322017022409365100021",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "aspCallBackUrl":{
+                        "description":"HUB will send the notify result request to this url directly",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "user":{
+                        "description":"User making the request",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "responseDate":{
+                        "description":"Date and time the request is answered",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string",
+                           "format":"date-time"
+                        }
+                     },
+                     "targetSystem":{
+                        "description":"The system where targets the request.",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "sendBy":{
+                        "description":"Identifier of the application or issuer of the request message",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     }
+                  },
+                  "content":{
+                     "application/json;charset=utf-8":{
+                        "schema":{
+                           "required":[
+                              "latency",
+                              "messageUUID",
+                              "responseDate"
+                           ],
+                           "type":"object",
+                           "properties":{
+                              "messageUUID":{
+                                 "type":"string",
+                                 "description":"ID of message"
+                              },
+                              "responseDate":{
+                                 "type":"string",
+                                 "description":"Date of the response",
+                                 "format":"date-time"
+                              },
+                              "latency":{
+                                 "type":"integer",
+                                 "description":"Time of the operation execution in milliseconds"
+                              },
+                              "errorList":{
+                                 "type":"object",
+                                 "properties":{
+                                    "error":{
+                                       "type":"array",
+                                       "items":{
+                                          "required":[
+                                             "code",
+                                             "description"
+                                          ],
+                                          "type":"object",
+                                          "properties":{
+                                             "code":{
+                                                "type":"string",
+                                                "description":"Application related code"
+                                             },
+                                             "severityLevel":{
+                                                "type":"string",
+                                                "description":"Ifentifies the severity of the transaction"
+                                             },
+                                             "description":{
+                                                "type":"string",
+                                                "description":"Text that explains the reason for error."
+                                             },
+                                             "actor":{
+                                                "type":"string",
+                                                "description":"Response Actor."
+                                             },
+                                             "businessMeaning":{
+                                                "type":"string",
+                                                "description":"Meaning of the response."
+                                             }
+                                          },
+                                          "description":"Error defined for detail the fault"
+                                       }
+                                    }
+                                 },
+                                 "description":"List with the detail of the faults"
+                              }
+                           },
+                           "description":"Error defined for detail the fault"
+                        }
+                     }
+                  }
+               },
+               "404":{
+                  "description":"Not Found",
+                  "headers":{
+                     "country":{
+                        "description":"Indicates the country to route. ISO 1366 \u2013 3 character Example: MEX",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "originSystem":{
+                        "description":"The system where is originated the request.",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "messageUUID":{
+                        "description":"Transaction identity for each request",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "latency":{
+                        "description":"Duration of the execution in milliseconds",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "maximum":30000,
+                           "minimum":1,
+                           "type":"integer"
+                        }
+                     },
+                     "correlatorId":{
+                        "description":"NB ID used to match the request with its corresponding SB asynchronous notification. The format should be like below:  ASPID+yyyyMMddHHmmss+sequence(5 digits)  Note:+ means concat  The ASPID is the M2M indentifer, and its length is maximum 21 characters  yyyyMMddHHmmss is the UTC time format.  Sequence is an increased sequence, and its length is 5 digits.the sequence should be started with 00001 and end with 99999.  Example: TP000002322017022409365100021",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "aspCallBackUrl":{
+                        "description":"HUB will send the notify result request to this url directly",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "user":{
+                        "description":"User making the request",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "responseDate":{
+                        "description":"Date and time the request is answered",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string",
+                           "format":"date-time"
+                        }
+                     },
+                     "targetSystem":{
+                        "description":"The system where targets the request.",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "sendBy":{
+                        "description":"Identifier of the application or issuer of the request message",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     }
+                  },
+                  "content":{
+                     "application/json;charset=utf-8":{
+                        "schema":{
+                           "required":[
+                              "latency",
+                              "messageUUID",
+                              "responseDate"
+                           ],
+                           "type":"object",
+                           "properties":{
+                              "messageUUID":{
+                                 "type":"string",
+                                 "description":"ID of message"
+                              },
+                              "responseDate":{
+                                 "type":"string",
+                                 "description":"Date of the response",
+                                 "format":"date-time"
+                              },
+                              "latency":{
+                                 "type":"integer",
+                                 "description":"Time of the operation execution in milliseconds"
+                              },
+                              "errorList":{
+                                 "type":"object",
+                                 "properties":{
+                                    "error":{
+                                       "type":"array",
+                                       "items":{
+                                          "required":[
+                                             "code",
+                                             "description"
+                                          ],
+                                          "type":"object",
+                                          "properties":{
+                                             "code":{
+                                                "type":"string",
+                                                "description":"Application related code"
+                                             },
+                                             "severityLevel":{
+                                                "type":"string",
+                                                "description":"Ifentifies the severity of the transaction"
+                                             },
+                                             "description":{
+                                                "type":"string",
+                                                "description":"Text that explains the reason for error."
+                                             },
+                                             "actor":{
+                                                "type":"string",
+                                                "description":"Response Actor."
+                                             },
+                                             "businessMeaning":{
+                                                "type":"string",
+                                                "description":"Meaning of the response."
+                                             }
+                                          },
+                                          "description":"Error defined for detail the fault"
+                                       }
+                                    }
+                                 },
+                                 "description":"List with the detail of the faults"
+                              }
+                           },
+                           "description":"Error defined for detail the fault"
+                        }
+                     }
+                  }
+               },
+               "500":{
+                  "description":"Internal Server Error",
+                  "headers":{
+                     "country":{
+                        "description":"Indicates the country to route. ISO 1366 \u2013 3 character Example: MEX",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "originSystem":{
+                        "description":"The system where is originated the request.",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "messageUUID":{
+                        "description":"Transaction identity for each request",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "latency":{
+                        "description":"Duration of the execution in milliseconds",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "maximum":30000,
+                           "minimum":1,
+                           "type":"integer"
+                        }
+                     },
+                     "correlatorId":{
+                        "description":"NB ID used to match the request with its corresponding SB asynchronous notification. The format should be like below:  ASPID+yyyyMMddHHmmss+sequence(5 digits)  Note:+ means concat  The ASPID is the M2M indentifer, and its length is maximum 21 characters  yyyyMMddHHmmss is the UTC time format.  Sequence is an increased sequence, and its length is 5 digits.the sequence should be started with 00001 and end with 99999.  Example: TP000002322017022409365100021",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "aspCallBackUrl":{
+                        "description":"HUB will send the notify result request to this url directly",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "user":{
+                        "description":"User making the request",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "responseDate":{
+                        "description":"Date and time the request is answered",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string",
+                           "format":"date-time"
+                        }
+                     },
+                     "targetSystem":{
+                        "description":"The system where targets the request.",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "sendBy":{
+                        "description":"Identifier of the application or issuer of the request message",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     }
+                  },
+                  "content":{
+                     "application/json;charset=utf-8":{
+                        "schema":{
+                           "required":[
+                              "latency",
+                              "messageUUID",
+                              "responseDate"
+                           ],
+                           "type":"object",
+                           "properties":{
+                              "messageUUID":{
+                                 "type":"string",
+                                 "description":"ID of message"
+                              },
+                              "responseDate":{
+                                 "type":"string",
+                                 "description":"Date of the response",
+                                 "format":"date-time"
+                              },
+                              "latency":{
+                                 "type":"integer",
+                                 "description":"Time of the operation execution in milliseconds"
+                              },
+                              "errorList":{
+                                 "type":"object",
+                                 "properties":{
+                                    "error":{
+                                       "type":"array",
+                                       "items":{
+                                          "required":[
+                                             "code",
+                                             "description"
+                                          ],
+                                          "type":"object",
+                                          "properties":{
+                                             "code":{
+                                                "type":"string",
+                                                "description":"Application related code"
+                                             },
+                                             "severityLevel":{
+                                                "type":"string",
+                                                "description":"Ifentifies the severity of the transaction"
+                                             },
+                                             "description":{
+                                                "type":"string",
+                                                "description":"Text that explains the reason for error."
+                                             },
+                                             "actor":{
+                                                "type":"string",
+                                                "description":"Response Actor."
+                                             },
+                                             "businessMeaning":{
+                                                "type":"string",
+                                                "description":"Meaning of the response."
+                                             }
+                                          },
+                                          "description":"Error defined for detail the fault"
+                                       }
+                                    }
+                                 },
+                                 "description":"List with the detail of the faults"
+                              }
+                           },
+                           "description":"Error defined for detail the fault"
+                        }
+                     }
+                  }
+               }
+            }
+         },
+         "post":{
+            "tags":[
+               "communicationMessage"
+            ],
+            "summary":"Creates a CommunicationMessage",
+            "description":"This operation creates a CommunicationMessage entity.",
+            "operationId":"createCommunicationMessage",
+            "parameters":[
+               {
+                  "name":"correlatorId",
+                  "in":"header",
+                  "description":"NB ID used to match the request with its corresponding SB asynchronous notification. The format should be like below:  ASPID+yyyyMMddHHmmss+sequence(5 digits)  Note:+ means concat  The ASPID is the M2M indentifer, and its length is maximum 21 characters  yyyyMMddHHmmss is the UTC time format.  Sequence is an increased sequence, and its length is 5 digits.the sequence should be started with 00001 and end with 99999.  Example: TP000002322017022409365100021",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"userName",
+                  "in":"header",
+                  "description":"user Identifier",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"aspCallBackUrl",
+                  "in":"header",
+                  "description":"HUB will send the notify result request to this url directly",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"version",
+                  "in":"header",
+                  "description":"Transaction identity for each request",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"messageUUID",
+                  "in":"header",
+                  "description":"Transaction identity for each request",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"requestDate",
+                  "in":"header",
+                  "description":"Time and date the request is sent",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string",
+                     "format":"date-time"
+                  }
+               },
+               {
+                  "name":"senderBy",
+                  "in":"header",
+                  "description":"Identifier of the application or issuer of the request message",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"ipClient",
+                  "in":"header",
+                  "description":"Client Ip",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"ipServer",
+                  "in":"header",
+                  "description":"Server Ip",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"country",
+                  "in":"header",
+                  "description":"Indicates the country to route. ISO 1366 \u2013 3 character Example: MEX",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"targetSystem",
+                  "in":"header",
+                  "description":"The system where targets the request.",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"originSystem",
+                  "in":"header",
+                  "description":"The system where is originated the request.",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"channel",
+                  "in":"header",
+                  "description":"Identifies the channel that invokes the service.",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"applicationId",
+                  "in":"header",
+                  "description":"Application Id.",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"subChannel",
+                  "in":"header",
+                  "description":"Identifies the sub-channel that invokes the service.",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"device",
+                  "in":"header",
+                  "description":"Id of the device from which the invocation originated.",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"operatorId",
+                  "in":"header",
+                  "description":"Operator Identifier",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "maximum":256,
+                     "minimum":1,
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"employeeNumber",
+                  "in":"header",
+                  "description":"employeeNumber",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"userId",
+                  "in":"header",
+                  "description":"userId",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"salesForce",
+                  "in":"header",
+                  "description":"salesForce",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"region",
+                  "in":"header",
+                  "description":"Region",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               },
+               {
+                  "name":"adendum",
+                  "in":"header",
+                  "required":false,
+                  "style":"simple",
+                  "explode":false,
+                  "schema":{
+                     "type":"string"
+                  }
+               }
+            ],
+            "requestBody":{
+               "description":"The CommunicationMessage to be created",
+               "content":{
+                  "application/json;charset=utf-8":{
+                     "schema":{
+                        "type":"object",
+                        "properties":{
+                           "id":{
+                              "type":"string",
+                              "description":"Unique identifier of Communication Message"
+                           },
+                           "description":{
+                              "type":"string",
+                              "description":"Description for the whole object"
+                           },
+                           "logFlag":{
+                              "type":"boolean"
+                           },
+                           "messageType":{
+                              "type":"string",
+                              "description":"The type of message, such as: SMS, Email, Mobile app push notification"
+                           },
+                           "characteristic":{
+                              "type":"array",
+                              "description":"Any additional characteristic(s) of this message",
+                              "items":{
+                                 "required":[
+                                    "name",
+                                    "value"
+                                 ],
+                                 "type":"object",
+                                 "properties":{
+                                    "id":{
+                                       "type":"string",
+                                       "description":"Unique identifier of the characteristic"
+                                    },
+                                    "name":{
+                                       "type":"string",
+                                       "description":"Name of the characteristic"
+                                    },
+                                    "valueType":{
+                                       "type":"string",
+                                       "description":"Data type of the value of the characteristic"
+                                    },
+                                    "value":{
+                                       "type":"string",
+                                       "description":"Value of the characteristic"
+                                    },
+                                    "@baseType":{
+                                       "type":"string",
+                                       "description":"When sub-classing, this defines the super-class"
+                                    },
+                                    "@schemaLocation":{
+                                       "type":"string",
+                                       "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                                       "format":"uri"
+                                    },
+                                    "@type":{
+                                       "type":"string",
+                                       "description":"When sub-classing, this defines the sub-class entity name"
+                                    }
+                                 },
+                                 "description":"Describes a given characteristic of an object or entity through a name/value pair."
+                              }
+                           },
+                           "attachment":{
+                              "type":"array",
+                              "items":{
+                                 "type":"object",
+                                 "properties":{
+                                    "id":{
+                                       "type":"string",
+                                       "description":"Unique identifier for this particular attachment"
+                                    },
+                                    "href":{
+                                       "type":"string",
+                                       "description":"URI for this Attachment"
+                                    },
+                                    "attachmentType":{
+                                       "type":"string",
+                                       "description":"Attachment type such as video, picture"
+                                    },
+                                    "content":{
+                                       "type":"string",
+                                       "description":"The actual contents of the attachment object, if embedded, encoded as base64"
+                                    },
+                                    "description":{
+                                       "type":"string",
+                                       "description":"A narrative text describing the content of the attachment"
+                                    },
+                                    "mimeType":{
+                                       "type":"string",
+                                       "description":"Attachment mime type such as extension file for video, picture and document"
+                                    },
+                                    "name":{
+                                       "type":"string",
+                                       "description":"The name of the attachment"
+                                    },
+                                    "url":{
+                                       "type":"string",
+                                       "description":"Uniform Resource Locator, is a web page address (a subset of URI)"
+                                    },
+                                    "characteristic":{
+                                       "type":"array",
+                                       "description":"Any additional characteristic(s) of this message",
+                                       "items":{
+                                          "required":[
+                                             "name",
+                                             "value"
+                                          ],
+                                          "type":"object",
+                                          "properties":{
+                                             "id":{
+                                                "type":"string",
+                                                "description":"Unique identifier of the characteristic"
+                                             },
+                                             "name":{
+                                                "type":"string",
+                                                "description":"Name of the characteristic"
+                                             },
+                                             "valueType":{
+                                                "type":"string",
+                                                "description":"Data type of the value of the characteristic"
+                                             },
+                                             "value":{
+                                                "type":"string",
+                                                "description":"Value of the characteristic"
+                                             },
+                                             "@baseType":{
+                                                "type":"string",
+                                                "description":"When sub-classing, this defines the super-class"
+                                             },
+                                             "@schemaLocation":{
+                                                "type":"string",
+                                                "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                                                "format":"uri"
+                                             },
+                                             "@type":{
+                                                "type":"string",
+                                                "description":"When sub-classing, this defines the sub-class entity name"
+                                             }
+                                          },
+                                          "description":"Describes a given characteristic of an object or entity through a name/value pair."
+                                       }
+                                    },
+                                    "validFor":{
+                                       "type":"object",
+                                       "properties":{
+                                          "endDateTime":{
+                                             "type":"string",
+                                             "description":"End of the time period, using IETC-RFC-3339 format",
+                                             "format":"date-time",
+                                             "example":"1985-04-12T23:20:50.520Z"
+                                          },
+                                          "startDateTime":{
+                                             "type":"string",
+                                             "description":"Start of the time period, using IETC-RFC-3339 format",
+                                             "format":"date-time",
+                                             "example":"1985-04-12T23:20:50.520Z"
+                                          }
+                                       },
+                                       "description":"A period of time, either as a deadline (endDateTime only) a startDateTime only, or both"
+                                    }
+                                 },
+                                 "description":"Complements the description of an element (for instance a product) through video, pictures..."
+                              }
+                           },
+                           "receiver":{
+                              "type":"array",
+                              "items":{
+                                 "type":"object",
+                                 "properties":{
+                                    "id":{
+                                       "type":"string",
+                                       "description":"ID of the receiver"
+                                    },
+                                    "appUserId":{
+                                       "type":"string",
+                                       "description":"ID of the mobile app user"
+                                    },
+                                    "email":{
+                                       "type":"string",
+                                       "description":"Receiver address of email, if the communication type is email"
+                                    },
+                                    "ip":{
+                                       "type":"string",
+                                       "description":"IP address of the receiver"
+                                    },
+                                    "name":{
+                                       "type":"string",
+                                       "description":"Name of the receiver"
+                                    },
+                                    "phoneNumber":{
+                                       "type":"string",
+                                       "description":"Phone number of the receiver, if the communication type is SMS."
+                                    },
+                                    "party":{
+                                       "type":"object",
+                                       "properties":{
+                                          "id":{
+                                             "type":"string",
+                                             "description":"Unique identifier of a related entity."
+                                          },
+                                          "identifierType":{
+                                             "type":"string"
+                                          },
+                                          "href":{
+                                             "type":"string",
+                                             "description":"Reference of the related entity."
+                                          },
+                                          "name":{
+                                             "type":"string",
+                                             "description":"Name of the related entity."
+                                          },
+                                          "role":{
+                                             "type":"string",
+                                             "description":"Role played by the related party"
+                                          },
+                                          "@baseType":{
+                                             "type":"string",
+                                             "description":"When sub-classing, this defines the super-class"
+                                          },
+                                          "@schemaLocation":{
+                                             "type":"string",
+                                             "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                                             "format":"uri"
+                                          },
+                                          "@type":{
+                                             "type":"string",
+                                             "description":"When sub-classing, this defines the sub-class entity name"
+                                          },
+                                          "@referredType":{
+                                             "type":"string",
+                                             "description":"The actual type of the target instance when needed for disambiguation."
+                                          }
+                                       },
+                                       "description":"Related Entity reference. A related party defines party or party role linked to a specific entity."
+                                    }
+                                 },
+                                 "description":"Receivers of the communication message."
+                              }
+                           },
+                           "sender":{
+                              "type":"object",
+                              "properties":{
+                                 "id":{
+                                    "type":"string",
+                                    "description":"ID of the sender"
+                                 },
+                                 "email":{
+                                    "type":"string",
+                                    "description":"Sender address of email, if the communication type is email"
+                                 },
+                                 "name":{
+                                    "type":"string",
+                                    "description":"Name of the sender"
+                                 },
+                                 "phoneNumber":{
+                                    "type":"string",
+                                    "description":"Phone number of the sender, if the communication type is SMS."
+                                 },
+                                 "party":{
+                                    "type":"object",
+                                    "properties":{
+                                       "id":{
+                                          "type":"string",
+                                          "description":"Unique identifier of a related entity."
+                                       },
+                                       "identifierType":{
+                                          "type":"string"
+                                       },
+                                       "href":{
+                                          "type":"string",
+                                          "description":"Reference of the related entity."
+                                       },
+                                       "name":{
+                                          "type":"string",
+                                          "description":"Name of the related entity."
+                                       },
+                                       "role":{
+                                          "type":"string",
+                                          "description":"Role played by the related party"
+                                       },
+                                       "@baseType":{
+                                          "type":"string",
+                                          "description":"When sub-classing, this defines the super-class"
+                                       },
+                                       "@schemaLocation":{
+                                          "type":"string",
+                                          "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                                          "format":"uri"
+                                       },
+                                       "@type":{
+                                          "type":"string",
+                                          "description":"When sub-classing, this defines the sub-class entity name"
+                                       },
+                                       "@referredType":{
+                                          "type":"string",
+                                          "description":"The actual type of the target instance when needed for disambiguation."
+                                       }
+                                    },
+                                    "description":"Related Entity reference. A related party defines party or party role linked to a specific entity."
+                                 }
+                              },
+                              "description":"Sender of the communication message."
+                           },
+                           "@baseType":{
+                              "type":"string",
+                              "description":"When sub-classing, this defines the super-class"
+                           },
+                           "@schemaLocation":{
+                              "type":"string",
+                              "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                              "format":"uri"
+                           },
+                           "@type":{
+                              "type":"string",
+                              "description":"When sub-classing, this defines the sub-class entity name"
+                           }
+                        },
+                        "description":"Communication message means a notification approach in the format of a message which can be dispatched (sent) to the certain user by the system with the content which can be felt and understood by the recipient. The user can be either a final customer or a customer service agent. The message can reach the customer in different interaction channels, including: email, short message, mobile app notification (push)."
+                     },
+                     "examples":{
+                        "NetflixSubscriptionNotificationRequest":{
+                        "$ref":"#/components/examples/NetflixSubscriptionNotificationRequest"
+                     }
+                  }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "200":{
+                  "description":"Created",
+                  "headers":{
+                     "country":{
+                        "description":"Indicates the country to route. ISO 1366 \u2013 3 character Example: MEX",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "originSystem":{
+                        "description":"The system where is originated the request.",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "messageUUID":{
+                        "description":"Transaction identity for each request",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "latency":{
+                        "description":"Duration of the execution in milliseconds",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "maximum":30000,
+                           "minimum":1,
+                           "type":"integer"
+                        }
+                     },
+                     "correlatorId":{
+                        "description":"NB ID used to match the request with its corresponding SB asynchronous notification. The format should be like below:  ASPID+yyyyMMddHHmmss+sequence(5 digits)  Note:+ means concat  The ASPID is the M2M indentifer, and its length is maximum 21 characters  yyyyMMddHHmmss is the UTC time format.  Sequence is an increased sequence, and its length is 5 digits.the sequence should be started with 00001 and end with 99999.  Example: TP000002322017022409365100021",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "aspCallBackUrl":{
+                        "description":"HUB will send the notify result request to this url directly",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "user":{
+                        "description":"User making the request",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "responseDate":{
+                        "description":"Date and time the request is answered",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string",
+                           "format":"date-time"
+                        }
+                     },
+                     "targetSystem":{
+                        "description":"The system where targets the request.",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "sendBy":{
+                        "description":"Identifier of the application or issuer of the request message",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     }
+                  },
+                  "content":{
+                     "application/json;charset=utf-8":{
+                        "schema":{
+                           "type":"object",
+                           "properties":{
+                              "id":{
+                                 "type":"string",
+                                 "description":"Unique identifier of Communication Message"
+                              },
+                              "description":{
+                                 "type":"string",
+                                 "description":"Description for the whole object"
+                              },
+                              "logFlag":{
+                                 "type":"boolean"
+                              },
+                              "messageType":{
+                                 "type":"string",
+                                 "description":"The type of message, such as: SMS, Email, Mobile app push notification"
+                              },
+                              "characteristic":{
+                                 "type":"array",
+                                 "description":"Any additional characteristic(s) of this message",
+                                 "items":{
+                                    "required":[
+                                       "name",
+                                       "value"
+                                    ],
+                                    "type":"object",
+                                    "properties":{
+                                       "id":{
+                                          "type":"string",
+                                          "description":"Unique identifier of the characteristic"
+                                       },
+                                       "name":{
+                                          "type":"string",
+                                          "description":"Name of the characteristic"
+                                       },
+                                       "valueType":{
+                                          "type":"string",
+                                          "description":"Data type of the value of the characteristic"
+                                       },
+                                       "value":{
+                                          "type":"string",
+                                          "description":"Value of the characteristic"
+                                       },
+                                       "@baseType":{
+                                          "type":"string",
+                                          "description":"When sub-classing, this defines the super-class"
+                                       },
+                                       "@schemaLocation":{
+                                          "type":"string",
+                                          "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                                          "format":"uri"
+                                       },
+                                       "@type":{
+                                          "type":"string",
+                                          "description":"When sub-classing, this defines the sub-class entity name"
+                                       }
+                                    },
+                                    "description":"Describes a given characteristic of an object or entity through a name/value pair."
+                                 }
+                              },
+                              "attachment":{
+                                 "type":"array",
+                                 "items":{
+                                    "type":"object",
+                                    "properties":{
+                                       "id":{
+                                          "type":"string",
+                                          "description":"Unique identifier for this particular attachment"
+                                       },
+                                       "href":{
+                                          "type":"string",
+                                          "description":"URI for this Attachment"
+                                       },
+                                       "attachmentType":{
+                                          "type":"string",
+                                          "description":"Attachment type such as video, picture"
+                                       },
+                                       "content":{
+                                          "type":"string",
+                                          "description":"The actual contents of the attachment object, if embedded, encoded as base64"
+                                       },
+                                       "description":{
+                                          "type":"string",
+                                          "description":"A narrative text describing the content of the attachment"
+                                       },
+                                       "mimeType":{
+                                          "type":"string",
+                                          "description":"Attachment mime type such as extension file for video, picture and document"
+                                       },
+                                       "name":{
+                                          "type":"string",
+                                          "description":"The name of the attachment"
+                                       },
+                                       "url":{
+                                          "type":"string",
+                                          "description":"Uniform Resource Locator, is a web page address (a subset of URI)"
+                                       },
+                                       "characteristic":{
+                                          "type":"array",
+                                          "description":"Any additional characteristic(s) of this message",
+                                          "items":{
+                                             "required":[
+                                                "name",
+                                                "value"
+                                             ],
+                                             "type":"object",
+                                             "properties":{
+                                                "id":{
+                                                   "type":"string",
+                                                   "description":"Unique identifier of the characteristic"
+                                                },
+                                                "name":{
+                                                   "type":"string",
+                                                   "description":"Name of the characteristic"
+                                                },
+                                                "valueType":{
+                                                   "type":"string",
+                                                   "description":"Data type of the value of the characteristic"
+                                                },
+                                                "value":{
+                                                   "type":"string",
+                                                   "description":"Value of the characteristic"
+                                                },
+                                                "@baseType":{
+                                                   "type":"string",
+                                                   "description":"When sub-classing, this defines the super-class"
+                                                },
+                                                "@schemaLocation":{
+                                                   "type":"string",
+                                                   "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                                                   "format":"uri"
+                                                },
+                                                "@type":{
+                                                   "type":"string",
+                                                   "description":"When sub-classing, this defines the sub-class entity name"
+                                                }
+                                             },
+                                             "description":"Describes a given characteristic of an object or entity through a name/value pair."
+                                          }
+                                       },
+                                       "validFor":{
+                                          "type":"object",
+                                          "properties":{
+                                             "endDateTime":{
+                                                "type":"string",
+                                                "description":"End of the time period, using IETC-RFC-3339 format",
+                                                "format":"date-time",
+                                                "example":"1985-04-12T23:20:50.520Z"
+                                             },
+                                             "startDateTime":{
+                                                "type":"string",
+                                                "description":"Start of the time period, using IETC-RFC-3339 format",
+                                                "format":"date-time",
+                                                "example":"1985-04-12T23:20:50.520Z"
+                                             }
+                                          },
+                                          "description":"A period of time, either as a deadline (endDateTime only) a startDateTime only, or both"
+                                       }
+                                    },
+                                    "description":"Complements the description of an element (for instance a product) through video, pictures..."
+                                 }
+                              },
+                              "receiver":{
+                                 "type":"array",
+                                 "items":{
+                                    "type":"object",
+                                    "properties":{
+                                       "id":{
+                                          "type":"string",
+                                          "description":"ID of the receiver"
+                                       },
+                                       "appUserId":{
+                                          "type":"string",
+                                          "description":"ID of the mobile app user"
+                                       },
+                                       "email":{
+                                          "type":"string",
+                                          "description":"Receiver address of email, if the communication type is email"
+                                       },
+                                       "ip":{
+                                          "type":"string",
+                                          "description":"IP address of the receiver"
+                                       },
+                                       "name":{
+                                          "type":"string",
+                                          "description":"Name of the receiver"
+                                       },
+                                       "phoneNumber":{
+                                          "type":"string",
+                                          "description":"Phone number of the receiver, if the communication type is SMS."
+                                       },
+                                       "party":{
+                                          "type":"object",
+                                          "properties":{
+                                             "id":{
+                                                "type":"string",
+                                                "description":"Unique identifier of a related entity."
+                                             },
+                                             "identifierType":{
+                                                "type":"string"
+                                             },
+                                             "href":{
+                                                "type":"string",
+                                                "description":"Reference of the related entity."
+                                             },
+                                             "name":{
+                                                "type":"string",
+                                                "description":"Name of the related entity."
+                                             },
+                                             "role":{
+                                                "type":"string",
+                                                "description":"Role played by the related party"
+                                             },
+                                             "@baseType":{
+                                                "type":"string",
+                                                "description":"When sub-classing, this defines the super-class"
+                                             },
+                                             "@schemaLocation":{
+                                                "type":"string",
+                                                "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                                                "format":"uri"
+                                             },
+                                             "@type":{
+                                                "type":"string",
+                                                "description":"When sub-classing, this defines the sub-class entity name"
+                                             },
+                                             "@referredType":{
+                                                "type":"string",
+                                                "description":"The actual type of the target instance when needed for disambiguation."
+                                             }
+                                          },
+                                          "description":"Related Entity reference. A related party defines party or party role linked to a specific entity."
+                                       }
+                                    },
+                                    "description":"Receivers of the communication message."
+                                 }
+                              },
+                              "sender":{
+                                 "type":"object",
+                                 "properties":{
+                                    "id":{
+                                       "type":"string",
+                                       "description":"ID of the sender"
+                                    },
+                                    "email":{
+                                       "type":"string",
+                                       "description":"Sender address of email, if the communication type is email"
+                                    },
+                                    "name":{
+                                       "type":"string",
+                                       "description":"Name of the sender"
+                                    },
+                                    "phoneNumber":{
+                                       "type":"string",
+                                       "description":"Phone number of the sender, if the communication type is SMS."
+                                    },
+                                    "party":{
+                                       "type":"object",
+                                       "properties":{
+                                          "id":{
+                                             "type":"string",
+                                             "description":"Unique identifier of a related entity."
+                                          },
+                                          "identifierType":{
+                                             "type":"string"
+                                          },
+                                          "href":{
+                                             "type":"string",
+                                             "description":"Reference of the related entity."
+                                          },
+                                          "name":{
+                                             "type":"string",
+                                             "description":"Name of the related entity."
+                                          },
+                                          "role":{
+                                             "type":"string",
+                                             "description":"Role played by the related party"
+                                          },
+                                          "@baseType":{
+                                             "type":"string",
+                                             "description":"When sub-classing, this defines the super-class"
+                                          },
+                                          "@schemaLocation":{
+                                             "type":"string",
+                                             "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                                             "format":"uri"
+                                          },
+                                          "@type":{
+                                             "type":"string",
+                                             "description":"When sub-classing, this defines the sub-class entity name"
+                                          },
+                                          "@referredType":{
+                                             "type":"string",
+                                             "description":"The actual type of the target instance when needed for disambiguation."
+                                          }
+                                       },
+                                       "description":"Related Entity reference. A related party defines party or party role linked to a specific entity."
+                                    }
+                                 },
+                                 "description":"Sender of the communication message."
+                              },
+                              "@baseType":{
+                                 "type":"string",
+                                 "description":"When sub-classing, this defines the super-class"
+                              },
+                              "@schemaLocation":{
+                                 "type":"string",
+                                 "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                                 "format":"uri"
+                              },
+                              "@type":{
+                                 "type":"string",
+                                 "description":"When sub-classing, this defines the sub-class entity name"
+                              }
+                           },
+                           "description":"Communication message means a notification approach in the format of a message which can be dispatched (sent) to the certain user by the system with the content which can be felt and understood by the recipient. The user can be either a final customer or a customer service agent. The message can reach the customer in different interaction channels, including: email, short message, mobile app notification (push)."
+                        },
+                        "examples":{
+                            "NetflixSubscriptionNotificationResponse":{
+                            "$ref":"#/components/examples/NetflixSubscriptionNotificationResponse"
+                         }
+                          
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad Request",
+                  "headers":{
+                     "country":{
+                        "description":"Indicates the country to route. ISO 1366 \u2013 3 character Example: MEX",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "originSystem":{
+                        "description":"The system where is originated the request.",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "messageUUID":{
+                        "description":"Transaction identity for each request",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "latency":{
+                        "description":"Duration of the execution in milliseconds",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "maximum":30000,
+                           "minimum":1,
+                           "type":"integer"
+                        }
+                     },
+                     "correlatorId":{
+                        "description":"NB ID used to match the request with its corresponding SB asynchronous notification. The format should be like below:  ASPID+yyyyMMddHHmmss+sequence(5 digits)  Note:+ means concat  The ASPID is the M2M indentifer, and its length is maximum 21 characters  yyyyMMddHHmmss is the UTC time format.  Sequence is an increased sequence, and its length is 5 digits.the sequence should be started with 00001 and end with 99999.  Example: TP000002322017022409365100021",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "aspCallBackUrl":{
+                        "description":"HUB will send the notify result request to this url directly",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "user":{
+                        "description":"User making the request",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "responseDate":{
+                        "description":"Date and time the request is answered",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string",
+                           "format":"date-time"
+                        }
+                     },
+                     "targetSystem":{
+                        "description":"The system where targets the request.",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "sendBy":{
+                        "description":"Identifier of the application or issuer of the request message",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     }
+                  },
+                  "content":{
+                     "application/json;charset=utf-8":{
+                        "schema":{
+                           "required":[
+                              "latency",
+                              "messageUUID",
+                              "responseDate"
+                           ],
+                           "type":"object",
+                           "properties":{
+                              "messageUUID":{
+                                 "type":"string",
+                                 "description":"ID of message"
+                              },
+                              "responseDate":{
+                                 "type":"string",
+                                 "description":"Date of the response",
+                                 "format":"date-time"
+                              },
+                              "latency":{
+                                 "type":"integer",
+                                 "description":"Time of the operation execution in milliseconds"
+                              },
+                              "errorList":{
+                                 "type":"object",
+                                 "properties":{
+                                    "error":{
+                                       "type":"array",
+                                       "items":{
+                                          "required":[
+                                             "code",
+                                             "description"
+                                          ],
+                                          "type":"object",
+                                          "properties":{
+                                             "code":{
+                                                "type":"string",
+                                                "description":"Application related code"
+                                             },
+                                             "severityLevel":{
+                                                "type":"string",
+                                                "description":"Ifentifies the severity of the transaction"
+                                             },
+                                             "description":{
+                                                "type":"string",
+                                                "description":"Text that explains the reason for error."
+                                             },
+                                             "actor":{
+                                                "type":"string",
+                                                "description":"Response Actor."
+                                             },
+                                             "businessMeaning":{
+                                                "type":"string",
+                                                "description":"Meaning of the response."
+                                             }
+                                          },
+                                          "description":"Error defined for detail the fault"
+                                       }
+                                    }
+                                 },
+                                 "description":"List with the detail of the faults"
+                              }
+                           },
+                           "description":"Error defined for detail the fault"
+                        }
+                     }
+                  }
+               },
+               "404":{
+                  "description":"Not Found",
+                  "headers":{
+                     "country":{
+                        "description":"Indicates the country to route. ISO 1366 \u2013 3 character Example: MEX",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "originSystem":{
+                        "description":"The system where is originated the request.",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "messageUUID":{
+                        "description":"Transaction identity for each request",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "latency":{
+                        "description":"Duration of the execution in milliseconds",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "maximum":30000,
+                           "minimum":1,
+                           "type":"integer"
+                        }
+                     },
+                     "correlatorId":{
+                        "description":"NB ID used to match the request with its corresponding SB asynchronous notification. The format should be like below:  ASPID+yyyyMMddHHmmss+sequence(5 digits)  Note:+ means concat  The ASPID is the M2M indentifer, and its length is maximum 21 characters  yyyyMMddHHmmss is the UTC time format.  Sequence is an increased sequence, and its length is 5 digits.the sequence should be started with 00001 and end with 99999.  Example: TP000002322017022409365100021",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "aspCallBackUrl":{
+                        "description":"HUB will send the notify result request to this url directly",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "user":{
+                        "description":"User making the request",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "responseDate":{
+                        "description":"Date and time the request is answered",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string",
+                           "format":"date-time"
+                        }
+                     },
+                     "targetSystem":{
+                        "description":"The system where targets the request.",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "sendBy":{
+                        "description":"Identifier of the application or issuer of the request message",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     }
+                  },
+                  "content":{
+                     "application/json;charset=utf-8":{
+                        "schema":{
+                           "required":[
+                              "latency",
+                              "messageUUID",
+                              "responseDate"
+                           ],
+                           "type":"object",
+                           "properties":{
+                              "messageUUID":{
+                                 "type":"string",
+                                 "description":"ID of message"
+                              },
+                              "responseDate":{
+                                 "type":"string",
+                                 "description":"Date of the response",
+                                 "format":"date-time"
+                              },
+                              "latency":{
+                                 "type":"integer",
+                                 "description":"Time of the operation execution in milliseconds"
+                              },
+                              "errorList":{
+                                 "type":"object",
+                                 "properties":{
+                                    "error":{
+                                       "type":"array",
+                                       "items":{
+                                          "required":[
+                                             "code",
+                                             "description"
+                                          ],
+                                          "type":"object",
+                                          "properties":{
+                                             "code":{
+                                                "type":"string",
+                                                "description":"Application related code"
+                                             },
+                                             "severityLevel":{
+                                                "type":"string",
+                                                "description":"Ifentifies the severity of the transaction"
+                                             },
+                                             "description":{
+                                                "type":"string",
+                                                "description":"Text that explains the reason for error."
+                                             },
+                                             "actor":{
+                                                "type":"string",
+                                                "description":"Response Actor."
+                                             },
+                                             "businessMeaning":{
+                                                "type":"string",
+                                                "description":"Meaning of the response."
+                                             }
+                                          },
+                                          "description":"Error defined for detail the fault"
+                                       }
+                                    }
+                                 },
+                                 "description":"List with the detail of the faults"
+                              }
+                           },
+                           "description":"Error defined for detail the fault"
+                        }
+                     }
+                  }
+               },
+               "500":{
+                  "description":"Internal Server Error",
+                  "headers":{
+                     "country":{
+                        "description":"Indicates the country to route. ISO 1366 \u2013 3 character Example: MEX",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "originSystem":{
+                        "description":"The system where is originated the request.",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "messageUUID":{
+                        "description":"Transaction identity for each request",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "latency":{
+                        "description":"Duration of the execution in milliseconds",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "maximum":30000,
+                           "minimum":1,
+                           "type":"integer"
+                        }
+                     },
+                     "correlatorId":{
+                        "description":"NB ID used to match the request with its corresponding SB asynchronous notification. The format should be like below:  ASPID+yyyyMMddHHmmss+sequence(5 digits)  Note:+ means concat  The ASPID is the M2M indentifer, and its length is maximum 21 characters  yyyyMMddHHmmss is the UTC time format.  Sequence is an increased sequence, and its length is 5 digits.the sequence should be started with 00001 and end with 99999.  Example: TP000002322017022409365100021",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "aspCallBackUrl":{
+                        "description":"HUB will send the notify result request to this url directly",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "user":{
+                        "description":"User making the request",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "responseDate":{
+                        "description":"Date and time the request is answered",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string",
+                           "format":"date-time"
+                        }
+                     },
+                     "targetSystem":{
+                        "description":"The system where targets the request.",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     },
+                     "sendBy":{
+                        "description":"Identifier of the application or issuer of the request message",
+                        "style":"simple",
+                        "explode":false,
+                        "schema":{
+                           "type":"string"
+                        }
+                     }
+                  },
+                  "content":{
+                     "application/json;charset=utf-8":{
+                        "schema":{
+                           "required":[
+                              "latency",
+                              "messageUUID",
+                              "responseDate"
+                           ],
+                           "type":"object",
+                           "properties":{
+                              "messageUUID":{
+                                 "type":"string",
+                                 "description":"ID of message"
+                              },
+                              "responseDate":{
+                                 "type":"string",
+                                 "description":"Date of the response",
+                                 "format":"date-time"
+                              },
+                              "latency":{
+                                 "type":"integer",
+                                 "description":"Time of the operation execution in milliseconds"
+                              },
+                              "errorList":{
+                                 "type":"object",
+                                 "properties":{
+                                    "error":{
+                                       "type":"array",
+                                       "items":{
+                                          "required":[
+                                             "code",
+                                             "description"
+                                          ],
+                                          "type":"object",
+                                          "properties":{
+                                             "code":{
+                                                "type":"string",
+                                                "description":"Application related code"
+                                             },
+                                             "severityLevel":{
+                                                "type":"string",
+                                                "description":"Ifentifies the severity of the transaction"
+                                             },
+                                             "description":{
+                                                "type":"string",
+                                                "description":"Text that explains the reason for error."
+                                             },
+                                             "actor":{
+                                                "type":"string",
+                                                "description":"Response Actor."
+                                             },
+                                             "businessMeaning":{
+                                                "type":"string",
+                                                "description":"Meaning of the response."
+                                             }
+                                          },
+                                          "description":"Error defined for detail the fault"
+                                       }
+                                    }
+                                 },
+                                 "description":"List with the detail of the faults"
+                              }
+                           },
+                           "description":"Error defined for detail the fault"
+                        }
+                     }
+                  }
+               }
+            },
+            "x-codegen-request-body-name":"communicationMessage"
+         }
+      }
+   },
+   "components":{
+      "examples":{
+         "NetflixSubscriptionNotificationRequest":{
+            "value":{
+                "description": "Netflix Subscribe Notification",
+                "characteristic": [
+                    {
+                        "name": "EventID",
+                        "valueType": "string",
+                        "value": "<EventID>"
+                    },
+                    {
+                        "name": "EventType",
+                        "valueType": "string",
+                        "value": "<EventType>"
+                    },
+                    {
+                        "name": "EventVersion",
+                        "valueType": "string",
+                        "value": "<EventVersion>"
+                    },
+                    {
+                        "name": "EventTimestamp",
+                        "valueType": "string",
+                        "value": "<EventTimestamp>"
+                    },
+                    {
+                        "name": "EventPayload",
+                        "valueType": "JSON",
+                        "value": "{}"
+                    },
+                    {
+                        "name": "PatternReferenceID",
+                        "valueType": "string",
+                        "value": "<PatternReferenceID>"
+                    }
+                ]
+            }
+         },
+         "NetflixSubscriptionNotificationResponse":{
+            "value":{
+                "id": "d93e3ce8-c38d-4834-adb2-b7c65a40381e",
+                "description": "Netflix Subscribe Notification",
+                "characteristic": [
+                    {
+                        "name": "EventID",
+                        "valueType": "string",
+                        "value": "<EventID>"
+                    },
+                    {
+                        "name": "EventType",
+                        "valueType": "string",
+                        "value": "<EventType>"
+                    },
+                    {
+                        "name": "EventVersion",
+                        "valueType": "string",
+                        "value": "<EventVersion>"
+                    },
+                    {
+                        "name": "EventTimestamp",
+                        "valueType": "string",
+                        "value": "<EventTimestamp>"
+                    },
+                    {
+                        "name": "EventPayload",
+                        "valueType": "JSON",
+                        "value": "{}"
+                    },
+                    {
+                        "name": "PatternReferenceID",
+                        "valueType": "string",
+                        "value": "<PatternReferenceID>"
+                    }
+                ],
+                "createdAt": "2025-02-21T07:20:50.52Z",
+                "updatedAt": "2025-02-21T07:20:50.52Z"
+            }
+         },
+         "BadAuthorization":{
+            "value":{
+               "Error":{
+                  "ErrorCode":"BadAuthorization",
+                  "ErrorDescription":"Authorization header value is invalid."
+               }
+            }
+         },
+         "InternalServerError":{
+            "value":{
+               "Error":{
+                  "ErrorCode":"ServerError",
+                  "ErrorDescription":"Cannot process the request; try again later."
+               }
+            }
+         },
+         "ServiceUnavailable":{
+            "value":{
+               "Error":{
+                  "ErrorCode":"ServiceUnavailable",
+                  "ErrorDescription":"Cannot process the request, try again later."
+               }
+            }
+         }
+      },
+      "schemas":{
+         "Characteristic":{
+            "required":[
+               "name",
+               "value"
+            ],
+            "type":"object",
+            "properties":{
+               "id":{
+                  "type":"string",
+                  "description":"Unique identifier of the characteristic"
+               },
+               "name":{
+                  "type":"string",
+                  "description":"Name of the characteristic"
+               },
+               "valueType":{
+                  "type":"string",
+                  "description":"Data type of the value of the characteristic"
+               },
+               "value":{
+                  "type":"string",
+                  "description":"Value of the characteristic"
+               },
+               "@baseType":{
+                  "type":"string",
+                  "description":"When sub-classing, this defines the super-class"
+               },
+               "@schemaLocation":{
+                  "type":"string",
+                  "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                  "format":"uri"
+               },
+               "@type":{
+                  "type":"string",
+                  "description":"When sub-classing, this defines the sub-class entity name"
+               }
+            },
+            "description":"Describes a given characteristic of an object or entity through a name/value pair."
+         },
+         "TimePeriod":{
+            "type":"object",
+            "properties":{
+               "endDateTime":{
+                  "type":"string",
+                  "description":"End of the time period, using IETC-RFC-3339 format",
+                  "format":"date-time",
+                  "example":"1985-04-12T23:20:50.520Z"
+               },
+               "startDateTime":{
+                  "type":"string",
+                  "description":"Start of the time period, using IETC-RFC-3339 format",
+                  "format":"date-time",
+                  "example":"1985-04-12T23:20:50.520Z"
+               }
+            },
+            "description":"A period of time, either as a deadline (endDateTime only) a startDateTime only, or both"
+         },
+         "CommunicationMessage":{
+            "type":"object",
+            "properties":{
+               "id":{
+                  "type":"string",
+                  "description":"Unique identifier of Communication Message"
+               },
+               "description":{
+                  "type":"string",
+                  "description":"Description for the whole object"
+               },
+               "logFlag":{
+                  "type":"boolean"
+               },
+               "messageType":{
+                  "type":"string",
+                  "description":"The type of message, such as: SMS, Email, Mobile app push notification"
+               },
+               "characteristic":{
+                  "type":"array",
+                  "description":"Any additional characteristic(s) of this message",
+                  "items":{
+                     "required":[
+                        "name",
+                        "value"
+                     ],
+                     "type":"object",
+                     "properties":{
+                        "id":{
+                           "type":"string",
+                           "description":"Unique identifier of the characteristic"
+                        },
+                        "name":{
+                           "type":"string",
+                           "description":"Name of the characteristic"
+                        },
+                        "valueType":{
+                           "type":"string",
+                           "description":"Data type of the value of the characteristic"
+                        },
+                        "value":{
+                           "type":"string",
+                           "description":"Value of the characteristic"
+                        },
+                        "@baseType":{
+                           "type":"string",
+                           "description":"When sub-classing, this defines the super-class"
+                        },
+                        "@schemaLocation":{
+                           "type":"string",
+                           "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                           "format":"uri"
+                        },
+                        "@type":{
+                           "type":"string",
+                           "description":"When sub-classing, this defines the sub-class entity name"
+                        }
+                     },
+                     "description":"Describes a given characteristic of an object or entity through a name/value pair."
+                  }
+               },
+               "attachment":{
+                  "type":"array",
+                  "items":{
+                     "type":"object",
+                     "properties":{
+                        "id":{
+                           "type":"string",
+                           "description":"Unique identifier for this particular attachment"
+                        },
+                        "href":{
+                           "type":"string",
+                           "description":"URI for this Attachment"
+                        },
+                        "attachmentType":{
+                           "type":"string",
+                           "description":"Attachment type such as video, picture"
+                        },
+                        "content":{
+                           "type":"string",
+                           "description":"The actual contents of the attachment object, if embedded, encoded as base64"
+                        },
+                        "description":{
+                           "type":"string",
+                           "description":"A narrative text describing the content of the attachment"
+                        },
+                        "mimeType":{
+                           "type":"string",
+                           "description":"Attachment mime type such as extension file for video, picture and document"
+                        },
+                        "name":{
+                           "type":"string",
+                           "description":"The name of the attachment"
+                        },
+                        "url":{
+                           "type":"string",
+                           "description":"Uniform Resource Locator, is a web page address (a subset of URI)"
+                        },
+                        "characteristic":{
+                           "type":"array",
+                           "description":"Any additional characteristic(s) of this message",
+                           "items":{
+                              "required":[
+                                 "name",
+                                 "value"
+                              ],
+                              "type":"object",
+                              "properties":{
+                                 "id":{
+                                    "type":"string",
+                                    "description":"Unique identifier of the characteristic"
+                                 },
+                                 "name":{
+                                    "type":"string",
+                                    "description":"Name of the characteristic"
+                                 },
+                                 "valueType":{
+                                    "type":"string",
+                                    "description":"Data type of the value of the characteristic"
+                                 },
+                                 "value":{
+                                    "type":"string",
+                                    "description":"Value of the characteristic"
+                                 },
+                                 "@baseType":{
+                                    "type":"string",
+                                    "description":"When sub-classing, this defines the super-class"
+                                 },
+                                 "@schemaLocation":{
+                                    "type":"string",
+                                    "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                                    "format":"uri"
+                                 },
+                                 "@type":{
+                                    "type":"string",
+                                    "description":"When sub-classing, this defines the sub-class entity name"
+                                 }
+                              },
+                              "description":"Describes a given characteristic of an object or entity through a name/value pair."
+                           }
+                        },
+                        "validFor":{
+                           "type":"object",
+                           "properties":{
+                              "endDateTime":{
+                                 "type":"string",
+                                 "description":"End of the time period, using IETC-RFC-3339 format",
+                                 "format":"date-time",
+                                 "example":"1985-04-12T23:20:50.520Z"
+                              },
+                              "startDateTime":{
+                                 "type":"string",
+                                 "description":"Start of the time period, using IETC-RFC-3339 format",
+                                 "format":"date-time",
+                                 "example":"1985-04-12T23:20:50.520Z"
+                              }
+                           },
+                           "description":"A period of time, either as a deadline (endDateTime only) a startDateTime only, or both"
+                        }
+                     },
+                     "description":"Complements the description of an element (for instance a product) through video, pictures..."
+                  }
+               },
+               "receiver":{
+                  "type":"array",
+                  "items":{
+                     "type":"object",
+                     "properties":{
+                        "id":{
+                           "type":"string",
+                           "description":"ID of the receiver"
+                        },
+                        "appUserId":{
+                           "type":"string",
+                           "description":"ID of the mobile app user"
+                        },
+                        "email":{
+                           "type":"string",
+                           "description":"Receiver address of email, if the communication type is email"
+                        },
+                        "ip":{
+                           "type":"string",
+                           "description":"IP address of the receiver"
+                        },
+                        "name":{
+                           "type":"string",
+                           "description":"Name of the receiver"
+                        },
+                        "phoneNumber":{
+                           "type":"string",
+                           "description":"Phone number of the receiver, if the communication type is SMS."
+                        },
+                        "party":{
+                           "type":"object",
+                           "properties":{
+                              "id":{
+                                 "type":"string",
+                                 "description":"Unique identifier of a related entity."
+                              },
+                              "identifierType":{
+                                 "type":"string"
+                              },
+                              "href":{
+                                 "type":"string",
+                                 "description":"Reference of the related entity."
+                              },
+                              "name":{
+                                 "type":"string",
+                                 "description":"Name of the related entity."
+                              },
+                              "role":{
+                                 "type":"string",
+                                 "description":"Role played by the related party"
+                              },
+                              "@baseType":{
+                                 "type":"string",
+                                 "description":"When sub-classing, this defines the super-class"
+                              },
+                              "@schemaLocation":{
+                                 "type":"string",
+                                 "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                                 "format":"uri"
+                              },
+                              "@type":{
+                                 "type":"string",
+                                 "description":"When sub-classing, this defines the sub-class entity name"
+                              },
+                              "@referredType":{
+                                 "type":"string",
+                                 "description":"The actual type of the target instance when needed for disambiguation."
+                              }
+                           },
+                           "description":"Related Entity reference. A related party defines party or party role linked to a specific entity."
+                        }
+                     },
+                     "description":"Receivers of the communication message."
+                  }
+               },
+               "sender":{
+                  "type":"object",
+                  "properties":{
+                     "id":{
+                        "type":"string",
+                        "description":"ID of the sender"
+                     },
+                     "email":{
+                        "type":"string",
+                        "description":"Sender address of email, if the communication type is email"
+                     },
+                     "name":{
+                        "type":"string",
+                        "description":"Name of the sender"
+                     },
+                     "phoneNumber":{
+                        "type":"string",
+                        "description":"Phone number of the sender, if the communication type is SMS."
+                     },
+                     "party":{
+                        "type":"object",
+                        "properties":{
+                           "id":{
+                              "type":"string",
+                              "description":"Unique identifier of a related entity."
+                           },
+                           "identifierType":{
+                              "type":"string"
+                           },
+                           "href":{
+                              "type":"string",
+                              "description":"Reference of the related entity."
+                           },
+                           "name":{
+                              "type":"string",
+                              "description":"Name of the related entity."
+                           },
+                           "role":{
+                              "type":"string",
+                              "description":"Role played by the related party"
+                           },
+                           "@baseType":{
+                              "type":"string",
+                              "description":"When sub-classing, this defines the super-class"
+                           },
+                           "@schemaLocation":{
+                              "type":"string",
+                              "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                              "format":"uri"
+                           },
+                           "@type":{
+                              "type":"string",
+                              "description":"When sub-classing, this defines the sub-class entity name"
+                           },
+                           "@referredType":{
+                              "type":"string",
+                              "description":"The actual type of the target instance when needed for disambiguation."
+                           }
+                        },
+                        "description":"Related Entity reference. A related party defines party or party role linked to a specific entity."
+                     }
+                  },
+                  "description":"Sender of the communication message."
+               },
+               "@baseType":{
+                  "type":"string",
+                  "description":"When sub-classing, this defines the super-class"
+               },
+               "@schemaLocation":{
+                  "type":"string",
+                  "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                  "format":"uri"
+               },
+               "@type":{
+                  "type":"string",
+                  "description":"When sub-classing, this defines the sub-class entity name"
+               }
+            },
+            "description":"Communication message means a notification approach in the format of a message which can be dispatched (sent) to the certain user by the system with the content which can be felt and understood by the recipient. The user can be either a final customer or a customer service agent. The message can reach the customer in different interaction channels, including: email, short message, mobile app notification (push)."
+         },
+         "Receiver":{
+            "type":"object",
+            "properties":{
+               "id":{
+                  "type":"string",
+                  "description":"ID of the receiver"
+               },
+               "appUserId":{
+                  "type":"string",
+                  "description":"ID of the mobile app user"
+               },
+               "email":{
+                  "type":"string",
+                  "description":"Receiver address of email, if the communication type is email"
+               },
+               "ip":{
+                  "type":"string",
+                  "description":"IP address of the receiver"
+               },
+               "name":{
+                  "type":"string",
+                  "description":"Name of the receiver"
+               },
+               "phoneNumber":{
+                  "type":"string",
+                  "description":"Phone number of the receiver, if the communication type is SMS."
+               },
+               "party":{
+                  "type":"object",
+                  "properties":{
+                     "id":{
+                        "type":"string",
+                        "description":"Unique identifier of a related entity."
+                     },
+                     "identifierType":{
+                        "type":"string"
+                     },
+                     "href":{
+                        "type":"string",
+                        "description":"Reference of the related entity."
+                     },
+                     "name":{
+                        "type":"string",
+                        "description":"Name of the related entity."
+                     },
+                     "role":{
+                        "type":"string",
+                        "description":"Role played by the related party"
+                     },
+                     "@baseType":{
+                        "type":"string",
+                        "description":"When sub-classing, this defines the super-class"
+                     },
+                     "@schemaLocation":{
+                        "type":"string",
+                        "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                        "format":"uri"
+                     },
+                     "@type":{
+                        "type":"string",
+                        "description":"When sub-classing, this defines the sub-class entity name"
+                     },
+                     "@referredType":{
+                        "type":"string",
+                        "description":"The actual type of the target instance when needed for disambiguation."
+                     }
+                  },
+                  "description":"Related Entity reference. A related party defines party or party role linked to a specific entity."
+               }
+            },
+            "description":"Receivers of the communication message."
+         },
+         "Sender":{
+            "type":"object",
+            "properties":{
+               "id":{
+                  "type":"string",
+                  "description":"ID of the sender"
+               },
+               "email":{
+                  "type":"string",
+                  "description":"Sender address of email, if the communication type is email"
+               },
+               "name":{
+                  "type":"string",
+                  "description":"Name of the sender"
+               },
+               "phoneNumber":{
+                  "type":"string",
+                  "description":"Phone number of the sender, if the communication type is SMS."
+               },
+               "party":{
+                  "type":"object",
+                  "properties":{
+                     "id":{
+                        "type":"string",
+                        "description":"Unique identifier of a related entity."
+                     },
+                     "identifierType":{
+                        "type":"string"
+                     },
+                     "href":{
+                        "type":"string",
+                        "description":"Reference of the related entity."
+                     },
+                     "name":{
+                        "type":"string",
+                        "description":"Name of the related entity."
+                     },
+                     "role":{
+                        "type":"string",
+                        "description":"Role played by the related party"
+                     },
+                     "@baseType":{
+                        "type":"string",
+                        "description":"When sub-classing, this defines the super-class"
+                     },
+                     "@schemaLocation":{
+                        "type":"string",
+                        "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                        "format":"uri"
+                     },
+                     "@type":{
+                        "type":"string",
+                        "description":"When sub-classing, this defines the sub-class entity name"
+                     },
+                     "@referredType":{
+                        "type":"string",
+                        "description":"The actual type of the target instance when needed for disambiguation."
+                     }
+                  },
+                  "description":"Related Entity reference. A related party defines party or party role linked to a specific entity."
+               }
+            },
+            "description":"Sender of the communication message."
+         },
+         "RelatedParty":{
+            "type":"object",
+            "properties":{
+               "id":{
+                  "type":"string",
+                  "description":"Unique identifier of a related entity."
+               },
+               "identifierType":{
+                  "type":"string"
+               },
+               "href":{
+                  "type":"string",
+                  "description":"Reference of the related entity."
+               },
+               "name":{
+                  "type":"string",
+                  "description":"Name of the related entity."
+               },
+               "role":{
+                  "type":"string",
+                  "description":"Role played by the related party"
+               },
+               "@baseType":{
+                  "type":"string",
+                  "description":"When sub-classing, this defines the super-class"
+               },
+               "@schemaLocation":{
+                  "type":"string",
+                  "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                  "format":"uri"
+               },
+               "@type":{
+                  "type":"string",
+                  "description":"When sub-classing, this defines the sub-class entity name"
+               },
+               "@referredType":{
+                  "type":"string",
+                  "description":"The actual type of the target instance when needed for disambiguation."
+               }
+            },
+            "description":"Related Entity reference. A related party defines party or party role linked to a specific entity."
+         },
+         "Attachment":{
+            "type":"object",
+            "properties":{
+               "id":{
+                  "type":"string",
+                  "description":"Unique identifier for this particular attachment"
+               },
+               "href":{
+                  "type":"string",
+                  "description":"URI for this Attachment"
+               },
+               "attachmentType":{
+                  "type":"string",
+                  "description":"Attachment type such as video, picture"
+               },
+               "content":{
+                  "type":"string",
+                  "description":"The actual contents of the attachment object, if embedded, encoded as base64"
+               },
+               "description":{
+                  "type":"string",
+                  "description":"A narrative text describing the content of the attachment"
+               },
+               "mimeType":{
+                  "type":"string",
+                  "description":"Attachment mime type such as extension file for video, picture and document"
+               },
+               "name":{
+                  "type":"string",
+                  "description":"The name of the attachment"
+               },
+               "url":{
+                  "type":"string",
+                  "description":"Uniform Resource Locator, is a web page address (a subset of URI)"
+               },
+               "characteristic":{
+                  "type":"array",
+                  "description":"Any additional characteristic(s) of this message",
+                  "items":{
+                     "required":[
+                        "name",
+                        "value"
+                     ],
+                     "type":"object",
+                     "properties":{
+                        "id":{
+                           "type":"string",
+                           "description":"Unique identifier of the characteristic"
+                        },
+                        "name":{
+                           "type":"string",
+                           "description":"Name of the characteristic"
+                        },
+                        "valueType":{
+                           "type":"string",
+                           "description":"Data type of the value of the characteristic"
+                        },
+                        "value":{
+                           "type":"string",
+                           "description":"Value of the characteristic"
+                        },
+                        "@baseType":{
+                           "type":"string",
+                           "description":"When sub-classing, this defines the super-class"
+                        },
+                        "@schemaLocation":{
+                           "type":"string",
+                           "description":"A URI to a JSON-Schema file that defines additional attributes and relationships",
+                           "format":"uri"
+                        },
+                        "@type":{
+                           "type":"string",
+                           "description":"When sub-classing, this defines the sub-class entity name"
+                        }
+                     },
+                     "description":"Describes a given characteristic of an object or entity through a name/value pair."
+                  }
+               },
+               "validFor":{
+                  "type":"object",
+                  "properties":{
+                     "endDateTime":{
+                        "type":"string",
+                        "description":"End of the time period, using IETC-RFC-3339 format",
+                        "format":"date-time",
+                        "example":"1985-04-12T23:20:50.520Z"
+                     },
+                     "startDateTime":{
+                        "type":"string",
+                        "description":"Start of the time period, using IETC-RFC-3339 format",
+                        "format":"date-time",
+                        "example":"1985-04-12T23:20:50.520Z"
+                     }
+                  },
+                  "description":"A period of time, either as a deadline (endDateTime only) a startDateTime only, or both"
+               }
+            },
+            "description":"Complements the description of an element (for instance a product) through video, pictures..."
+         },
+         "GenericFault":{
+            "required":[
+               "latency",
+               "messageUUID",
+               "responseDate"
+            ],
+            "type":"object",
+            "properties":{
+               "messageUUID":{
+                  "type":"string",
+                  "description":"ID of message"
+               },
+               "responseDate":{
+                  "type":"string",
+                  "description":"Date of the response",
+                  "format":"date-time"
+               },
+               "latency":{
+                  "type":"integer",
+                  "description":"Time of the operation execution in milliseconds"
+               },
+               "errorList":{
+                  "type":"object",
+                  "properties":{
+                     "error":{
+                        "type":"array",
+                        "items":{
+                           "required":[
+                              "code",
+                              "description"
+                           ],
+                           "type":"object",
+                           "properties":{
+                              "code":{
+                                 "type":"string",
+                                 "description":"Application related code"
+                              },
+                              "severityLevel":{
+                                 "type":"string",
+                                 "description":"Ifentifies the severity of the transaction"
+                              },
+                              "description":{
+                                 "type":"string",
+                                 "description":"Text that explains the reason for error."
+                              },
+                              "actor":{
+                                 "type":"string",
+                                 "description":"Response Actor."
+                              },
+                              "businessMeaning":{
+                                 "type":"string",
+                                 "description":"Meaning of the response."
+                              }
+                           },
+                           "description":"Error defined for detail the fault"
+                        }
+                     }
+                  },
+                  "description":"List with the detail of the faults"
+               }
+            },
+            "description":"Error defined for detail the fault"
+         },
+         "ErrorListType":{
+            "type":"object",
+            "properties":{
+               "error":{
+                  "type":"array",
+                  "items":{
+                     "required":[
+                        "code",
+                        "description"
+                     ],
+                     "type":"object",
+                     "properties":{
+                        "code":{
+                           "type":"string",
+                           "description":"Application related code"
+                        },
+                        "severityLevel":{
+                           "type":"string",
+                           "description":"Ifentifies the severity of the transaction"
+                        },
+                        "description":{
+                           "type":"string",
+                           "description":"Text that explains the reason for error."
+                        },
+                        "actor":{
+                           "type":"string",
+                           "description":"Response Actor."
+                        },
+                        "businessMeaning":{
+                           "type":"string",
+                           "description":"Meaning of the response."
+                        }
+                     },
+                     "description":"Error defined for detail the fault"
+                  }
+               }
+            },
+            "description":"List with the detail of the faults"
+         },
+         "DetailResType":{
+            "required":[
+               "code",
+               "description"
+            ],
+            "type":"object",
+            "properties":{
+               "code":{
+                  "type":"string",
+                  "description":"Application related code"
+               },
+               "severityLevel":{
+                  "type":"string",
+                  "description":"Ifentifies the severity of the transaction"
+               },
+               "description":{
+                  "type":"string",
+                  "description":"Text that explains the reason for error."
+               },
+               "actor":{
+                  "type":"string",
+                  "description":"Response Actor."
+               },
+               "businessMeaning":{
+                  "type":"string",
+                  "description":"Meaning of the response."
+               }
+            },
+            "description":"Error defined for detail the fault"
+         }
+      },
+      "securitySchemes":{
+         "basicAuth":{
+            "type":"http",
+            "scheme":"basic"
+         }
+      }
+   }
+}
